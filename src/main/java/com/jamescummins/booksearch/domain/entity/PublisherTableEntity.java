@@ -3,6 +3,7 @@ package com.jamescummins.booksearch.domain.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,7 +15,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 @Entity
-//@Table(name = "publisher")
+@Table(name = "publisher")
 public class PublisherTableEntity{
 
 	

@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,7 +17,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @ToString
 @Entity
-//@Table(name = "author")
+@Table(name = "author")
 public class AuthorTableEntity{
 
 	
@@ -27,6 +28,6 @@ public class AuthorTableEntity{
 	@Column(name="name")
 	private String name;
 	
-	@Column(name="bob")
+	@Column(name="dob")
 	private LocalDate dob;
 }

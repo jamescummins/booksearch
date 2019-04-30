@@ -4,9 +4,9 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jamescummins.booksearch.domain.entity.PublisherTableEntity;
@@ -14,21 +14,21 @@ import com.jamescummins.booksearch.repository.PublisherTableRepository;
 
 
 @RestController
-@RequestMapping(value = { "/publisherS" })
+@RequestMapping(value = { "/publishers" })
 public class PublisherController {
 
 	@Autowired
 	private PublisherTableRepository publisherTableRepository;
 
-	@PostMapping("/")
+	@GetMapping(path = {"","/"})
 	public List<PublisherTableEntity> all() {
 		List<PublisherTableEntity> results = publisherTableRepository.findAll();
 		return results;
 	}
 
-	@PostMapping("/{id}")
-	public PublisherTableEntity id(@RequestParam Integer id) {
+	@GetMapping("/{id}")
+	public PublisherTableEntity id(@PathVariable Integer id) {
 		Optional<PublisherTableEntity> result = publisherTableRepository.findById(id);
-		return result.get();
+		return result.orElse(new PublisherTableEntity());
 	}
 }
